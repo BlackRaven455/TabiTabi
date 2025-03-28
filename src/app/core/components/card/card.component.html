@@ -1,0 +1,11 @@
+<div (@cardAnimator.done)="resetAnimationState($event)"
+     (swipeleft)='startAnimation("swipeleft")'
+     (swiperight)='startAnimation("swiperight")'
+     [@cardAnimator]="animationState"
+     class="tphoto"
+>
+  <img [src]="places[index].photoUrl" alt="Travel spot Photo" title="photo"/>
+  <div class="tname">{{ places[index].name }}, <span class="age">description</span></div>
+  <div class="tinfo"><i aria-hidden="true" class="fa fa-book"> 0</i><i aria-hidden="true" class="fa fa-users"> 0</i>
+  </div>
+</div>

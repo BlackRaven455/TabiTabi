@@ -1,0 +1,11 @@
+<div class="bg">
+  <div class="bgwrap">
+    <app-card [parentSubject]="parentSubject" [places]="places"></app-card>
+    <div class="controls">
+      <div (click)='cardAnimation("swipeleft")' class="no"><i aria-hidden="true" class="fa fa-times"></i></div>
+      <div class="info"><i aria-hidden="true" class="fa fa-info"></i></div>
+      <div (click)='cardAnimation("swiperight")' class="yes"><i aria-hidden="true" class="fa fa-heart"></i></div>
+    </div>
+  </div>
+</div>
+

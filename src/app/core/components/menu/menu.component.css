@@ -1,0 +1,56 @@
+:host {
+  background: white;
+  border-left: solid 1px black;
+  bottom: 0;
+  filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, 0.5));
+  isolation: isolate;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.15s ease-in transform;
+  width: 15rem;
+}
+
+:host[style="transform: translateX(-100%);"] {
+  display: none;
+  transform: translate(0, 0);
+}
+
+:host button {
+  display: none;
+}
+
+:host[style="transform: translateX(0px);"] {
+  transform: translate(0, 0);
+}
+
+:host[style="transform: translateX(0px);"] button {
+  display: block;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  opacity: 0;
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  border-bottom: solid 1px black;
+  padding: 1.25em 1.5em;
+}
+
+li:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+a {
+  font-size: 1.125rem;
+}

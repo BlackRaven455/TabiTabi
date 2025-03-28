@@ -1,0 +1,13 @@
+<div class="navbar">
+  <img alt="favicon" src="/logo1.png">
+  <button (click)="toggleOpen()" class="menu">
+    <svg viewBox="0 0 24 24">
+      <path
+        clip-rule="evenodd"
+        d="M0 3.2A1.2 1.2 0 011.2 2h21.6a1.2 1.2 0 010 2.4H1.2A1.2 1.2 0 010 3.2zm0 8.4a1.2 1.2 0 011.2-1.2h21.6a1.2 1.2 0 010 2.4H1.2A1.2 1.2 0 010 11.6zM0 20a1.2 1.2 0 011.2-1.2h21.6a1.2 1.2 0 010 2.4H1.2A1.2 1.2 0 010 20z"
+        fill-rule="evenodd"/>
+    </svg>
+    <span class="visually-hidden">Menu</span>
+  </button>
+</div>
+<app-menu (close)="toggleOpen()" [@openClose]="menuState"></app-menu>

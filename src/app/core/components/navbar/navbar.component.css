@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+.navbar {
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+  border-bottom-color: rgba(246, 207, 255);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+
+
+}
+
+.navbar img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.menu {
+  background: transparent;
+  border: none;
+  padding: 0;
+  position: absolute;
+  right: 1.5em;
+  top: 1em;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  svg {
+    height: 22px;
+  }
+
+}
+
+h1 {
+  @apply leading-tight size-2;
+}
