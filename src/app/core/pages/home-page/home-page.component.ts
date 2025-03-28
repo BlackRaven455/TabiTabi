@@ -3,9 +3,7 @@ import {NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [
-    NgStyle
-  ],
+  imports: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })

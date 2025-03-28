@@ -7,7 +7,6 @@ import {NgIf} from '@angular/common';
   selector: 'app-navbar',
   imports: [
     MenuComponent,
-    NgIf,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',

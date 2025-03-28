@@ -7,7 +7,7 @@ import {NgOptimizedImage, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, GamePageComponent, NgStyle, NgOptimizedImage],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgStyle],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
