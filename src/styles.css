@@ -1,20 +1,32 @@
 @import "tailwindcss";
 
-.button {
-  background-color: rgba(194, 146, 255, 1);
-  color: white;
-  border-radius: 8px;
-  padding: 10px 20px;
-  box-shadow: 2px 2px 5px rgba(80, 40, 120, 0.3);
-}
-
-.button:hover {
-  background-color: rgba(175, 125, 235, 1);
+:root {
+  --primary-bg: #f6e6ff;
+  --secondary-bg: rgb(169, 164, 178);
+  --text-color-light: white;
+  --text-color-dark: black;
 }
 
 body {
-  background-color: rgba(255, 245, 250, 1);
-  color: rgba(80, 40, 120, 1);
+  margin: 1rem;
+  padding: 1rem;
 }
 
+a {
+}
 
+.card {
+  background-color: var(--primary-bg);
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background-color: var(--primary-bg);
+  color: var(--text-color-dark);
+  border: none;
+  padding: 0 60px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+}

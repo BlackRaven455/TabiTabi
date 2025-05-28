@@ -1,6 +1,6 @@
 import {animate, keyframes, transition, trigger} from '@angular/animations';
 import {Component, Input, OnInit} from '@angular/core';
-import {IPlace} from '../../../shared/interfaces/IPlace';
+import {Iplace} from '../../../shared/interfaces/iplace';
 import {Subject} from 'rxjs';
 import {swipeleft, swiperight} from './keyframes';
 import {NgOptimizedImage} from '@angular/common';
@@ -8,9 +8,7 @@ import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-card',
-  imports: [
-    NgOptimizedImage
-  ],
+  imports: [],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   animations: [
@@ -23,7 +21,7 @@ export class CardComponent implements OnInit {
   index = 0;
   animationState: string = '';
   @Input() parentSubject: Subject<string> = new Subject();
-  @Input() places!: IPlace[];
+  @Input() places!: Iplace[];
 
   ngOnInit(): void {
     this.parentSubject.subscribe(event => {

@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {NavbarComponent} from '../../components/navbar/navbar.component';
-import {IPlace} from '../../../shared/interfaces/IPlace';
 import {PlaceService} from '../../services/place.service';
-import {NgForOf, NgOptimizedImage} from '@angular/common';
-import {Subject} from 'rxjs';
 import {CardComponent} from '../../components/card/card.component';
+import {Subject} from 'rxjs';
+import {Iplace} from '../../../shared/interfaces/iplace';
 
 @Component({
   selector: 'app-game-page',
@@ -16,9 +14,7 @@ import {CardComponent} from '../../components/card/card.component';
 })
 export class GamePageComponent implements OnInit {
   parentSubject: Subject<string> = new Subject();
-
-
-  places: IPlace[] = [];
+  placeList: Iplace[] = [];
 
   constructor(private placeService: PlaceService) {
   }
@@ -28,6 +24,6 @@ export class GamePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.places = this.placeService.getPlaces();
+    this.placeList = this.placeService.getPlaces();
   }
 }

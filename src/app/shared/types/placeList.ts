@@ -1,11 +1,11 @@
-import {IPlace} from '../interfaces/IPlace';
+import {Iplace} from '../interfaces/iplace';
 
 function generateUniqueId(): number {
   return Date.now() + Math.floor(Math.random() * 1000);
 }
 
 export class placeList {
-  private static placeList: IPlace[] = [
+  private static placeList: Iplace[] = [
     {
       'id': generateUniqueId(),
       'name': 'Tokyo',
@@ -58,7 +58,7 @@ export class placeList {
     },
   ];
 
-  static getPlaceList(): IPlace[] {
+  static getPlaceList(): Iplace[] {
     return this.placeList;
   }
 

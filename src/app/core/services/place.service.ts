@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
 import {placeList} from '../../shared/types/placeList';
-import {IPlace} from '../../shared/interfaces/IPlace';
+import {Iplace} from '../../shared/interfaces/iplace';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceService {
-  placeList: IPlace[] = placeList.getPlaceList();
+  placeList: Iplace[] = placeList.getPlaceList();
 
   constructor() {
   }
 
-  getPlaces(): IPlace[] {
+  getPlaces(): Iplace[] {
     return this.placeList;
   }
 
@@ -19,12 +19,12 @@ export class PlaceService {
     return this.placeList.find(place => placeId === placeId);
   }
 
-  addPlace(place: IPlace) {
+  addPlace(place: Iplace) {
     this.placeList.push(place);
   }
 
-  removePlace(place: IPlace) {
+  removePlace(place: Iplace) {
     this.placeList = this.placeList.filter(place => place.id !== place.id);
   }
-  
+
 }

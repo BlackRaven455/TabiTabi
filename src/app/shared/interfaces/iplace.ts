@@ -1,4 +1,4 @@
-export interface IPlace {
+export interface Iplace {
   id: number;
   name: string;
   photoUrl: string;

@@ -2,11 +2,13 @@ import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MenuComponent} from '../menu/menu.component';
 import {NgIf} from '@angular/common';
+import {SignUpFormComponent} from '../sign-up-form/sign-up-form.component';
 
 @Component({
   selector: 'app-navbar',
   imports: [
     MenuComponent,
+    SignUpFormComponent,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
