@@ -1,8 +1,8 @@
 import {Routes} from '@angular/router';
-import {HomePageComponent} from './core/pages/home-page/home-page.component';
-import {GamePageComponent} from './core/pages/game-page/game-page.component';
-import {SignUpFormComponent} from './core/components/sign-up-form/sign-up-form.component';
-import {DashboardComponent} from './core/pages/dashboard/dashboard.component';
+import {HomePageComponent} from './features/pages/home-page/home-page.component';
+import {GamePageComponent} from './features/pages/game-page/game-page.component';
+import {SignUpFormComponent} from './shared/components/sign-up-form/sign-up-form.component';
+import {DashboardComponent} from './features/pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -12,18 +12,16 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
+    title: 'Home',
+    component: DashboardComponent,
   },
   {
     path: 'game',
+    title: 'Game',
     component: GamePageComponent,
   },
   {
-    path: 'test',
+    path: 'test', title: 'Test',
     component: SignUpFormComponent
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  }
 ];

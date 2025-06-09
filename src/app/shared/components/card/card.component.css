@@ -1,4 +1,4 @@
-.tphoto {
+.place_card {
   width: 350px;
   height: 350px;
   overflow: hidden;
@@ -7,30 +7,28 @@
   top: 15px;
   border-radius: 10px;
   -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
   border: 1px solid #c0c0c0;
   padding-bottom: 60px;
   background-color: #fff;
   box-shadow: 2px 2px 2px #c0c0c0;
 }
 
-.tname {
+.place_name {
   padding: 15px;
   font-size: 20px;
   font-family: 'Helvetica', sans-serif;
   float: left;
 }
 
-.tname .age {
+.place_name .age {
   font-weight: 200;
 }
 
-.tinfo {
+.place_info {
   font-family: 'Helvetica', sans-serif;
 }
 
-.tinfo .fa-users, .tinfo .fa-book {
+.place_info .fa-users, .place_info .fa-book {
   color: #c0c0c0;
   float: right;
   position: relative;

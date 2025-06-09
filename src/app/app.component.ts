@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {NavbarComponent} from './core/components/navbar/navbar.component';
-import {FooterComponent} from './core/components/footer/footer.component';
-import {GamePageComponent} from './core/pages/game-page/game-page.component';
+import {NavbarComponent} from './layout/navbar/navbar.component';
+import {FooterComponent} from './layout/footer/footer.component';
+import {GamePageComponent} from './features/pages/game-page/game-page.component';
 import {NgOptimizedImage, NgStyle} from '@angular/common';
 
 @Component({

@@ -1,0 +1,114 @@
+.game_background {
+  background: linear-gradient(to bottom, #fff 0%, #f0e9ff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: center;
+  height: 720px;
+  width: 100%;
+  background-color: #fff;
+  /*border: 1px solid #c0c0c0;*/
+  overflow-x: hidden;
+}
+
+.game_wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #c0c0c0;
+  /*box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);*/
+  height: 90%;
+  width: 40%;
+}
+
+.controls {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.no {
+  margin: 10px;
+  background-color: #fff;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  top: 50px;
+}
+
+.no:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.no i {
+  border-radius: 50%;
+  color: #ff695b;
+  font-size: 80px;
+  padding: 17px 28px;
+}
+
+.info {
+  margin: 10px;
+  background-color: #fff;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  top: 30px;
+}
+
+.info .fa-info {
+  border-radius: 50%;
+  font-size: 23px;
+  padding: 15px 20px;
+  color: #398beb;
+}
+
+.info:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.yes {
+  margin: 10px;
+  background-color: #fff;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  top: 50px;
+}
+
+.yes:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.yes i {
+  border-radius: 50%;
+  color: #5de19c;
+  font-size: 60px;
+  padding: 35px 30px;
+}
+
