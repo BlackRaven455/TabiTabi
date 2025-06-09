@@ -1,6 +1,6 @@
 import {animate, keyframes, transition, trigger} from '@angular/animations';
 import {Component, Input, OnInit} from '@angular/core';
-import {Iplace} from '../../../shared/interfaces/iplace';
+import {Iplace} from '../../interfaces/iplace';
 import {Subject} from 'rxjs';
 import {swipeleft, swiperight} from './keyframes';
 import {NgOptimizedImage} from '@angular/common';

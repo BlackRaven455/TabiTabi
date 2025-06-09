@@ -1,0 +1,12 @@
+nav {
+  position: sticky;
+
+}
+
+nav:after {
+  content: "";
+  background: black;
+  position: absolute;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
