@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {placeList} from '../../shared/types/placeList';
-import {Iplace} from '../../shared/interfaces/iplace';
+import {placeList} from '../../../shared/types/placeList';
+import {Iplace} from '../../../shared/interfaces/iplace';
 
 @Injectable({
   providedIn: 'root'

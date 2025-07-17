@@ -1,9 +1,10 @@
 import {animate, keyframes, transition, trigger} from '@angular/animations';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Iplace} from '../../interfaces/iplace';
 import {Subject} from 'rxjs';
 import {swipeleft, swiperight} from './keyframes';
 import {NgOptimizedImage} from '@angular/common';
+import {Place} from '../../interfaces/place';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class CardComponent implements OnInit {
   index = 0;
   animationState: string = '';
   @Input() parentSubject: Subject<string> = new Subject();
-  @Input() places!: Iplace[];
+  @Input() places!: Place[];
+  @Output() chosenIndex: EventEmitter<number> = new EventEmitter();
 
   ngOnInit(): void {
     this.parentSubject.subscribe(event => {
@@ -40,11 +42,13 @@ export class CardComponent implements OnInit {
 
   resetAnimationState($event: any) {
     this.animationState = '';
+
     if (this.index >= this.places.length) {
       this.index = 0;
     } else {
       this.index++;
     }
+    this.chosenIndex.emit(this.index);
   }
 
 

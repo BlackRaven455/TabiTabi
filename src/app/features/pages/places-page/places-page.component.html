@@ -1,0 +1,66 @@
+<div>
+  <div class="w-2xl m-10">
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+      </div>
+      <input
+        [(ngModel)]="searchTerm"
+        (input)="onSearchInput()"
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg dark:bg-[oklch(95.2%_0.037_318.852)]"
+        placeholder="Search Places, Town..."
+      />
+      <button
+        type="button"
+        class="absolute end-2.5 bottom-2.5 focus:outline-none"
+        (click)="performSearch()"
+      >
+        検索
+      </button>
+    </div>
+  </div>
+
+<div class="results-info" *ngIf="searchTerm.trim()">
+  <p>検索結果: {{ filteredPlaces.length }} ／ {{ places.length }}</p>
+</div>
+
+<div class="no-results" *ngIf="searchTerm.trim() && filteredPlaces.length === 0">
+  <p>リクエストに該当する場所が見つかりません "{{ searchTerm }}"</p>
+</div>
+
+<div class="card_container">
+  <div class="place_card" *ngFor="let place of filteredPlaces; trackBy: trackByPlaceId">
+    <img [src]="place.imageUrl" class="img" alt="{{ place.name }}">
+    <div class="container">
+      <h1 class="title">{{ place.name }}</h1>
+      <p class="description">{{ place.description }}</p>
+      <div class="button_container">
+        <button
+          class="no"
+          (click)="placeIsLiked(place.placeId, false)"
+          [disabled]="isUpdatingPreference"
+        >
+          <i aria-hidden="true" class="fa fa-times"></i>
+        </button>
+        <button
+          class="yes"
+          (click)="placeIsLiked(place.placeId, true)"
+          [disabled]="isUpdatingPreference"
+        >
+          <i aria-hidden="true" class="fa fa-heart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="loading" *ngIf="isLoading">
+  <p>ダウンロード中...</p>
+</div>
+</div>

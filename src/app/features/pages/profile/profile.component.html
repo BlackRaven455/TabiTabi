@@ -1,0 +1,41 @@
+<div class="flex-grow p-4">
+  <div class="profile-settings mb-4">
+    <h2 class="text-xl mb-2">プロフィール設定</h2>
+    <form>
+      <div class="mb-4">
+        <label class="block mb-2" for="interests">興味</label>
+        <select class="p-2 border rounded w-full" id="interests" multiple>
+          <option>文化</option>
+          <option>食事</option>
+          <option>自然</option>
+          <option>買い物</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2" for="travel-style">旅行スタイル</label>
+        <select class="p-2 border rounded w-full" id="travel-style">
+          <option>経済</option>
+          <option>ルクス</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2" for="frequency">旅行の頻度</label>
+        <input
+          class="p-2 border rounded w-full"
+          id="frequency"
+          placeholder="Количество раз в год"
+          type="number"
+        />
+      </div>
+      <button class="mt-4" type="submit">保存</button>
+    </form>
+  </div>
+  <div class="user_preference_container">
+    <ul>
+      <li *ngFor="let pref of userPreference">
+        {{pref.placeName}}, {{pref.isLiked}}
+      </li>
+    </ul>
+  </div>
+  <button class="button" (click)="logout()">logout</button>
+</div>

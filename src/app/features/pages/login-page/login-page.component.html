@@ -1,0 +1,14 @@
+<div class="login_container">
+  <div class="form_container">
+  <h1>Please enter your information:</h1>
+  <form [formGroup]="loginForm" action="" method="post" (submit)="login()">
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" formControlName="email">
+    <label for="email">password:</label>
+    <input type="password" name="password" id="password" formControlName="password">
+    <button type="submit">Login</button>
+  </form>
+  <h1>If you are not yet registered:</h1>
+  <button routerLink="/signup">sign-up</button>
+  </div>
+</div>

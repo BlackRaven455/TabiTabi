@@ -1,0 +1,30 @@
+<div class="places_container d-flex flex-column p-4">
+  <h2>Nearby Places</h2>
+  <p>
+    Enter your location to see nearby places.
+  </p>
+  <div class="form_container ">
+    <form class="d-flex flex-column justify-content-center align-items-center">
+      <label for="longitude">longitude</label>
+      <input [value]="lon" id="longitude" name="longitude" placeholder="longitude" type="text"/>
+      <label for="latitude">latitude</label>
+      <input [value]="lat" id="latitude" name="latitude" placeholder="latitude" type="text"/>
+      <label for="radius">半径</label>
+      <input id="radius" name="radius" placeholder="半径" type="number" value="100">
+      <button (click)="getPlaces($event)">検索</button>
+    </form>
+  </div>
+  <div *ngIf="isLoading && validatedPlaces.length === 0" class="loading-indicator">
+    🔄 データを読み込み中…
+  </div>
+  <div *ngIf="isLoading && validatedPlaces.length !== 0" class="place_list">
+    <ul>
+      <li *ngFor="let place of validatedPlaces" class="d-flex flex-column justify-content-center align-items-center">
+        <p>{{ place.name }}. Rate: {{ place.rate }}</p>
+        <img *ngIf="place.image" [src]="place.image" alt="place image">
+      </li>
+    </ul>
+  </div>
+
+
+</div>
