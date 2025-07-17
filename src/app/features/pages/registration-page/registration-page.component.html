@@ -1,0 +1,16 @@
+<div class="registration_container">
+  <div class="form_container">
+  <h1>Please enter your information:</h1>
+  <form [formGroup]="registraionForm" (submit)="register()">
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" formControlName="email">
+    <label for="email">password:</label>
+    <input type="password" name="password" id="password" formControlName="password">
+    <label for="lastName">Last name:</label>
+    <input type="text" name="lastName" id="lastName" formControlName="lastName">
+    <label for="firstName">First name:</label>
+    <input type="text" name="firstName" id="firstName" formControlName="firstName">
+    <button type="submit">Register</button>
+  </form>
+  </div>
+</div>

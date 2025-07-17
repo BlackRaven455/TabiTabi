@@ -1,0 +1,87 @@
+.card_container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.place_card{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 10px;
+  padding: 0;
+  width: 400px;
+  height: 600px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.place_card img{
+  width: 100%;
+  height: 60%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.place_card p{
+  margin: 10px;
+}
+.place_card h1{
+  font-size: 40px;
+  text-align: center;
+}
+
+.button_container{
+  justify-self: center;
+  justify-content: end;
+}
+.button_container button{
+  padding: 0;
+  height: 40px;
+  width: 40px;
+}
+.no {
+  margin: 10px;
+  background-color: #fff;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #c0c0c0;
+}
+
+.no:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.no i {
+  color: #ff695b;
+  font-size: 30px;
+}
+
+.yes {
+  margin: 10px;
+  background-color: #fff;
+  height: 50px;
+  width: 40px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.yes:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.yes i {
+  border-radius: 50%;
+  color: #5de19c;
+  font-size: 24px;
+}

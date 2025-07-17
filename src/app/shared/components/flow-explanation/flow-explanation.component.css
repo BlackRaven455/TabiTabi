@@ -1,0 +1,65 @@
+.timeline {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  flex-direction: column;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 22.2%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 80%;
+  background-color: #fae8ff;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  position: relative;
+}
+
+/* The numbers on the left */
+.timeline-number {
+  font-weight: bold;
+  border-radius: 75%;
+  text-align: center;
+  /* Position slightly over the vertical line (optional styling) */
+  position: relative;
+  left: -20px;
+  z-index: 1;
+}
+
+.number {
+  position: absolute;
+  padding-top: 8px;
+  top: 20%;
+  left: -40px;
+  width: 50px;
+  height: 50px;
+  background-color: #fae8ff;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  text-align: center;
+}
+
+
+.timeline-content {
+  padding: 16px 16px;
+  position: relative;
+  /* Make sure content covers the line when numbers overlap */
+  left: -8px;
+  width: 80%;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+}

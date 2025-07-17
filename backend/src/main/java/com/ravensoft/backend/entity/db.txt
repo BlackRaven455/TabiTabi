@@ -1,0 +1,125 @@
+1. **Users** — информация о пользователях.
+2. **Categories** — категории мест (например, города, горы, храмы и т.д.).
+3. **Places** — конкретные места/достопримечательности.
+4. **UserPreferences** — записи свайпов пользователя (нравится/не нравится).
+5. **Recommendations** — рекомендованные места для пользователей на основе предпочтений.
+6. **Trips** — туры, связанные с рекомендованными местами.
+7. **Bookings** — бронирования туров пользователями.
+
+CREATE TABLE Users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE, -- Название категории (например, "Горы", "Храмы")
+    description TEXT -- Описание категории
+);
+
+CREATE TABLE Places (
+    place_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,          -- Название места
+    category_id INT NOT NULL,            -- ID категории из вашей таблицы Categories
+    description TEXT,                    -- Ваше описание
+    location VARCHAR(255),              -- Адрес (например, как вернет Google Places)
+    latitude DOUBLE PRECISION,          -- Широта
+    longitude DOUBLE PRECISION,         -- Долгота
+    google_place_id VARCHAR(255),       -- Идентификатор места в Google Places API
+    rating NUMERIC(3, 2),              -- Рейтинг места (например, 4.5)
+    user_ratings_total INT,            -- Количество отзывов
+    image_url VARCHAR(255),            -- URL изображения
+    CONSTRAINT fk_place_category FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
+);
+
+CREATE TABLE UserPreferences (
+    preference_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    place_id INT NOT NULL,
+    is_liked BOOLEAN NOT NULL, -- TRUE если пользователь свайпнул вправо (нравится), иначе FALSE
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_preference_user FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_preference_place FOREIGN KEY (place_id) REFERENCES Places(place_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Recommendations (
+    recommendation_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    place_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_recommendation_user FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_recommendation_place FOREIGN KEY (place_id) REFERENCES Places(place_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Trips (
+    trip_id INT AUTO_INCREMENT PRIMARY KEY,
+    place_id INT NOT NULL, -- С каким местом связан тур
+    name VARCHAR(100) NOT NULL, -- Название тура
+    description TEXT, -- Описание тура
+    price DECIMAL(10, 2) NOT NULL, -- Цена тура
+    start_date DATE NOT NULL, -- Дата начала тура
+    end_date DATE NOT NULL, -- Дата окончания тура
+    max_participants INT, -- Максимальное количество участников
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_trip_place FOREIGN KEY (place_id) REFERENCES Places(place_id) ON DELETE CASCADE
+);
+CREATE TABLE Bookings (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL, -- Пользователь, который забронировал
+    trip_id INT NOT NULL, -- Какой тур был забронирован
+    booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Когда было совершено бронирование
+    total_price DECIMAL(10, 2) NOT NULL, -- Итоговая сумма за тур
+    number_of_people INT NOT NULL, -- Количество участников
+    status VARCHAR(20) DEFAULT 'PENDING' CHECK (status IN ('PENDING', 'CONFIRMED', 'CANCELLED')), -- Статус бронирования
+    CONSTRAINT fk_booking_user FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_booking_trip FOREIGN KEY (trip_id) REFERENCES Trips(trip_id) ON DELETE CASCADE
+);
+### Логика работы приложения:
+1. **Выбор предпочтений через свайпы**:
+    - Пользователь свайпает карточки мест.
+    - Каждое свайп-взаимодействие записывается в таблицу `UserPreferences`.
+
+2. **Генерация рекомендаций**:
+    - На основе записей из таблицы `UserPreferences` и их связи с таблицей `Places`, система анализирует и записывает данные в таблицу `Recommendations`.
+
+3. **Рекомендация мест**:
+    - Пользователь видит свой список рекомендованных мест из таблицы `Recommendations`.
+
+4. **Поиск туров для выбранных мест**:
+    - На основе выбранного места (связанного с таблицей `Trips` через `place_id`), пользователю показываются подходящие туры.
+
+5. **Бронирования**:
+    - Пользователь выбирает тур и создает бронирование, которое записывается в таблицу `Bookings`.
+
+### Пример: Как это работает
+1. Пользователь свайпает на "Эверест" (нравится), запись добавляется в `UserPreferences` (`is_liked` = TRUE).
+2. Система анализирует и добавляет в таблицу `Recommendations` сходные места, например, "Гималаи".
+3. Пользователь открывает рекомендации и находит "Гималаи".
+4. Нажимает на "Гималаи" и видит туры из таблицы `Trips`, связанные с этим местом.
+5. Бронирует тур и запись появляется в `Bookings`.
+
+{
+   "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4",
+   "name": "Sydney Opera House",
+   "formatted_address": "Bennelong Point, Sydney NSW 2000, Australia",
+   "rating": 4.7,
+   "geometry": {
+       "location": {
+           "lat": -33.8567844,
+           "lng": 151.2152967
+       }
+   },
+   "types": ["tourist_attraction", "point_of_interest", "establishment"],
+   "photos": [
+       {
+           "photo_reference": "Aap_uEDcFA...",
+           "width": 3024,
+           "height": 4032
+       }
+   ]
+}

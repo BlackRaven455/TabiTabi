@@ -1,13 +1,13 @@
 <div class="game_background">
   <h2 class="text-center text-2xl mt-2 mb-2">今日のおすすめ観光地</h2>
   <div class="game_wrapper">
-    <app-card [parentSubject]="parentSubject" [places]="placeList"></app-card>
+    <app-card (chosenIndex)="receiveData($event)" [parentSubject]="parentSubject" [places]="places"></app-card>
     <div class="controls">
       <div (click)='cardAnimation("swipeleft")' class="no"><i aria-hidden="true" class="fa fa-times"></i></div>
       <div class="info"><i aria-hidden="true" class="fa fa-info"></i></div>
       <div (click)='cardAnimation("swiperight")' class="yes"><i aria-hidden="true" class="fa fa-heart"></i></div>
     </div>
   </div>
-  <app-progress-bar [current]="currentIndex" [total]="placeList.length" class="w-1/2"></app-progress-bar>
+  <app-progress-bar [current]="currentIndex" [total]="places.length" class="w-1/2"></app-progress-bar>
 </div>
 
